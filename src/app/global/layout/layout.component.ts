@@ -9,6 +9,8 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class LayoutComponent {
 
+    date = new Date();
+
     isDark = this.styleManagerService.isDark;
 
     opened: boolean;
