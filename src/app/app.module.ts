@@ -8,6 +8,7 @@ import {MaterialModule} from './global/material/material.module';
 import {LayoutModule} from './global/layout/layout.module';
 import {GlobalComponentsModule} from './global/components/global-components.module';
 import {UsersModule} from './users/users.module';
+import {AllPipesModule} from './global/pipes/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {UsersModule} from './users/users.module';
     LayoutModule,
     GlobalComponentsModule,
     UsersModule,
+    AllPipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

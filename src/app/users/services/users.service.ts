@@ -37,6 +37,7 @@ export class UsersService {
 
   transformData(item: any): UserDetails {
     return {
+      picture: item.picture.large,
       name: `${item.name.title} ${item.name.first} ${item.name.last}`,
       gender: item.gender,
       location: item.location.country,
@@ -44,7 +45,6 @@ export class UsersService {
       age: item.dob.age,
       registered: item.registered.date,
       'phone-number': item.phone,
-      picture: item.picture.large,
       nationality: item.nat
     }
   }

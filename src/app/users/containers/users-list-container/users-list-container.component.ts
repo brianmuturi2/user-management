@@ -13,7 +13,7 @@ export interface TableData {
 })
 export class UsersListContainerComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'gender', 'location', 'e-mail', 'age', 'registered', 'phone-number', 'picture', 'nationality'];
+  displayedColumns: string[] = ['picture', 'name', 'gender', 'location', 'e-mail', 'age', 'registered', 'phone-number', 'nationality'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
 
   data: TableData = {
