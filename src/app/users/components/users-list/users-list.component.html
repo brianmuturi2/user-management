@@ -1,1 +1,9 @@
-<app-table [data]="data"></app-table>
+
+<mat-card-title>Manage Users</mat-card-title>
+<mat-divider></mat-divider>
+<mat-card-content>
+    <div class="options">
+        <app-input [data]="inputConfig" (filterValue)="passFilter($event)"></app-input>
+    </div>
+    <app-table [data]="data"></app-table>
+</mat-card-content>

@@ -4,11 +4,13 @@ import {TableComponent} from './table/table.component';
 import {MaterialModule} from '../material/material.module';
 import {AllPipesModule} from '../pipes/pipes/pipes.module';
 import {ReplaceDashPipe} from '../pipes/replace-dash.pipe';
+import { InputComponent } from './input/input.component';
 
 
 @NgModule({
   declarations: [
     TableComponent,
+    InputComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import {ReplaceDashPipe} from '../pipes/replace-dash.pipe';
     AllPipesModule
   ],
   exports: [
-    TableComponent
+    TableComponent,
+    InputComponent
   ]
 })
 export class GlobalComponentsModule { }

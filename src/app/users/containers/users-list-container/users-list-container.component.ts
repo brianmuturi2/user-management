@@ -4,6 +4,7 @@ import {UserDetails, UsersService} from '../../services/users.service';
 export interface TableData {
   data: UserDetails[];
   columns: string[];
+  filter?: string;
 }
 
 @Component({
