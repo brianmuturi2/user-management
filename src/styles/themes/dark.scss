@@ -1,0 +1,93 @@
+@use 'sass:map';
+@use '../../../node_modules/@angular/material/index' as mat;
+
+$orange-peel: (
+        50: #fff3e0,
+        100: #ffe0b2,
+        200: #ffcd80,
+        300: #ffb84d,
+        400: #ffa826,
+        500: #ff9900,
+        600: #fb8d00,
+        700: #f57d00,
+        800: #ef6d00,
+        900: #e65200,
+        contrast: (
+                50: rgba(black, 0.87),
+                100: rgba(black, 0.87),
+                200: rgba(black, 0.87),
+                300: rgba(black, 0.87),
+                400: rgba(black, 0.87),
+                500: rgba(black, 0.87),
+                600: rgba(black, 0.87),
+                700: rgba(black, 0.87),
+                800: rgba(black, 0.87),
+                900: rgba(black, 0.87),
+        )
+);
+
+$crayola-blue: (
+        50: #e2f4ff,
+        100: #bae2ff,
+        200: #88d0ff,
+        300: #46bdff,
+        400: #00adff,
+        500: #009dff,
+        600: #008eff,
+        700: #0079ff,
+        800: #0066ff,
+        900: #2341e0,
+        contrast: (
+                50: rgba(black, 0.87),
+                100: rgba(black, 0.87),
+                200: rgba(black, 0.87),
+                300: rgba(black, 0.87),
+                400: rgba(black, 0.87),
+                500: rgba(black, 0.87),
+                600: rgba(black, 0.87),
+                700: rgba(black, 0.87),
+                800: rgba(black, 0.87),
+                900: rgba(black, 0.87),
+        )
+);
+
+$red: (
+        50: #ffe8e6,
+        100: #ffc8b8,
+        200: #ffa48b,
+        300: #ff7d5c,
+        400: #ff5a36,
+        500: #ff2d0d,
+        600: #ff2507,
+        700: #ff1900,
+        800: #f10300,
+        900: #da0000,
+        contrast: (
+                50: rgba(black, 0.87),
+                100: rgba(black, 0.87),
+                200: rgba(black, 0.87),
+                300: rgba(black, 0.87),
+                400: rgba(black, 0.87),
+                500: rgba(black, 0.87),
+                600: rgba(black, 0.87),
+                700: rgba(black, 0.87),
+                800: rgba(black, 0.87),
+                900: rgba(black, 0.87),
+        )
+);
+
+$orange-peel-primary: mat.define-palette($orange-peel, 500);
+$red-warn: mat.define-palette($red, 700);
+$crayola-blue-accent: mat.define-palette($orange-peel, 300);
+
+$app-dark-theme: mat.define-dark-theme((
+        color: (
+                primary: $orange-peel-primary,
+                accent: $crayola-blue-accent,
+                warn: $red-warn
+        )
+));
+
+.dark-theme {
+  @include mat.all-component-themes($app-dark-theme);
+}
