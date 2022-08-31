@@ -5,21 +5,26 @@ import {MaterialModule} from '../material/material.module';
 import {AllPipesModule} from '../pipes/pipes/pipes.module';
 import {ReplaceDashPipe} from '../pipes/replace-dash.pipe';
 import { InputComponent } from './input/input.component';
+import { SelectionCheckboxComponent } from './selection-checkbox/selection-checkbox.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     TableComponent,
     InputComponent,
+    SelectionCheckboxComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    AllPipesModule
+    AllPipesModule,
+    ReactiveFormsModule
   ],
   exports: [
     TableComponent,
-    InputComponent
+    InputComponent,
+    SelectionCheckboxComponent
   ]
 })
 export class GlobalComponentsModule { }

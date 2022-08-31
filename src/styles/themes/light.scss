@@ -78,7 +78,7 @@ $red: (
 
 $orange-peel-primary: mat.define-palette($orange-peel, 500);
 $red-warn: mat.define-palette($red, 700);
-$crayola-blue-accent: mat.define-palette($orange-peel, 300);
+$crayola-blue-accent: mat.define-palette($crayola-blue, 300);
 
 $app-light-theme: mat.define-light-theme((
     color: (

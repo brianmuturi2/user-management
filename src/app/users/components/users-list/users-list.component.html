@@ -4,6 +4,7 @@
 <mat-card-content>
     <div class="options">
         <app-input [data]="inputConfig" (filterValue)="passFilter($event)"></app-input>
+        <app-selection-checkbox [data]="selectionConfig" (selectedColumns)="updateColumns($event)"></app-selection-checkbox>
     </div>
     <app-table [data]="data"></app-table>
 </mat-card-content>

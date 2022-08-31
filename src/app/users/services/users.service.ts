@@ -51,4 +51,36 @@ export class UsersService {
       nationality: item.nat
     }
   }
+
+  updateRequestColumns(requestColumns: string[]) {
+    const params = [];
+    if (requestColumns.includes('picture')) {
+      params.push('picture');
+    }
+    if (requestColumns.includes('name')) {
+      params.push('name');
+    }
+    if (requestColumns.includes('gender')) {
+      params.push('gender');
+    }
+    if (requestColumns.includes('location')) {
+      params.push('location');
+    }
+    if (requestColumns.includes('e-mail')) {
+      params.push('email');
+    }
+    if (requestColumns.includes('age')) {
+      params.push('dob');
+    }
+    if (requestColumns.includes('registered')) {
+      params.push('registered');
+    }
+    if (requestColumns.includes('phone-number')) {
+      params.push('phone');
+    }
+    if (requestColumns.includes('nationality')) {
+      params.push('nat');
+    }
+    this.queryParams = params;
+  }
 }

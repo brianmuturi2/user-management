@@ -39,4 +39,8 @@ export class UsersListContainerComponent implements OnInit {
     })
   }
 
+  updateRequestColumns(e: string[]) {
+    this.usersService.updateRequestColumns(e);
+  }
+
 }

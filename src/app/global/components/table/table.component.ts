@@ -23,19 +23,10 @@ export class TableComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
+        this.columnsToDisplay = this.data.columns.slice();
         this.dataSource = new MatTableDataSource(this.data.data);
         if (this.data.filter) {
             this.applyFilter(this.data.filter);
-        }
-    }
-
-    addColumn(column: string) {
-        this.columnsToDisplay.push(column);
-    }
-
-    removeColumn(column: string) {
-        if (this.columnsToDisplay.length) {
-            this.columnsToDisplay = this.columnsToDisplay.filter(columnDisplayed => columnDisplayed !== column);
         }
     }
 

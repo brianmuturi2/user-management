@@ -1,0 +1,9 @@
+<div [formGroup]="form" class="column-select">
+    <ng-container formArrayName="columns">
+        <ng-container *ngFor="let columnForm of columns.controls">
+            <div [formGroup]="columnForm">
+                    <mat-checkbox formControlName="selected" [value]="columnForm.value.selected">{{columnForm.value.column | replaceDash | titlecase}}</mat-checkbox>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>
