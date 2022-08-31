@@ -49,15 +49,15 @@ export class UsersService {
 
         return {
             index: i + 1 + counter,
-            picture: (item.picture.large || 'Not Available'),
-            name: (`${item.name.title} ${item.name.first} ${item.name.last}` || 'Not Available'),
-            gender: (this.titleCasePipe.transform(item.gender) || 'Not Available'),
-            location: (item.location.country || 'Not Available'),
-            'e-mail': (item.email || 'Not Available'),
-            age: (`${item.dob.age} years` || 'Not Available'),
-            registered: (this.datePipe.transform(item.registered.date) || 'Not Available'),
-            'phone-number': (item.phone || 'Not Available'),
-            nationality: (item.nat || 'Not Available')
+            picture: (item.picture ? item.picture.large : 'Not Available'),
+            name: (item.name ? `${item.name.title} ${item.name.first} ${item.name.last}` : 'Not Available'),
+            gender: (item.gender ? this.titleCasePipe.transform(item.gender) : 'Not Available'),
+            location: (item.location ? item.location.country : 'Not Available'),
+            'e-mail': (item.email ? item.email : 'Not Available'),
+            age: (item.dob ? `${item.dob.age} years` : 'Not Available'),
+            registered: (item.registered ? this.datePipe.transform(item.registered.date) : 'Not Available'),
+            'phone-number': (item.phone ? item.phone : 'Not Available'),
+            nationality: (item.nat ? item.nat : 'Not Available')
         }
     }
 

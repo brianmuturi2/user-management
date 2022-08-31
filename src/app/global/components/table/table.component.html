@@ -3,7 +3,7 @@
         <ng-container [matColumnDef]="column" *ngFor="let column of data.columns">
             <th mat-header-cell *matHeaderCellDef> {{column | replaceDash | titlecase}} </th>
             <td mat-cell *matCellDef="let element">
-                <ng-container *ngIf="column === 'picture' && element[column]; else text">
+                <ng-container *ngIf="column === 'picture' && element[column] !== 'Not Available'; else text">
                     <img [src]="element[column]" alt="profile photo">
                 </ng-container>
                 <ng-template #text>{{element[column] ? element[column] : 'Not Available'}}</ng-template>
