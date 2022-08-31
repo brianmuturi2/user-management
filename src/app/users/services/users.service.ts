@@ -7,6 +7,7 @@ export interface Response {
 }
 
 export interface UserDetails {
+  index: number;
   name: string;
   gender: string;
   location: string;
@@ -30,16 +31,23 @@ export class UsersService {
               private datePipe: DatePipe,
               private titleCasePipe: TitleCasePipe) { }
 
-  getUsers(results: number = 50, params: string[] = this.queryParams) {
-
+  getUsers(requestNumber: number = 1, params: string[] = this.queryParams) {
+    const results = 50;
     const paramsQuery = params.join(',');
-    const fetchUrl = `${this.usersUrl}?results=${results}&${paramsQuery}`;
+    const fetchUrl = `${this.usersUrl}?page=${requestNumber}&results=${results}&${paramsQuery}`;
 
     return this.httpClient.get<Response>(fetchUrl);
   }
 
-  transformData(item: any): UserDetails {
+  transformData(item: any, i: number, page:number): UserDetails {
+    let counter: number = 0;
+
+    if (page > 1) {
+      counter = 50 * (page - 1);
+    }
+
     return {
+      index: i + 1 + counter,
       picture: item.picture.large,
       name: `${item.name.title} ${item.name.first} ${item.name.last}`,
       gender: this.titleCasePipe.transform(item.gender),
@@ -50,37 +58,5 @@ export class UsersService {
       'phone-number': item.phone,
       nationality: item.nat
     }
-  }
-
-  updateRequestColumns(requestColumns: string[]) {
-    const params = [];
-    if (requestColumns.includes('picture')) {
-      params.push('picture');
-    }
-    if (requestColumns.includes('name')) {
-      params.push('name');
-    }
-    if (requestColumns.includes('gender')) {
-      params.push('gender');
-    }
-    if (requestColumns.includes('location')) {
-      params.push('location');
-    }
-    if (requestColumns.includes('e-mail')) {
-      params.push('email');
-    }
-    if (requestColumns.includes('age')) {
-      params.push('dob');
-    }
-    if (requestColumns.includes('registered')) {
-      params.push('registered');
-    }
-    if (requestColumns.includes('phone-number')) {
-      params.push('phone');
-    }
-    if (requestColumns.includes('nationality')) {
-      params.push('nat');
-    }
-    this.queryParams = params;
   }
 }

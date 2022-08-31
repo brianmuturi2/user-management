@@ -12,6 +12,7 @@ export class UsersListComponent implements OnInit, OnChanges {
 
   @Input() data: TableData;
   @Output() requestColumns = new EventEmitter<string[]>();
+  @Output() fetchRequest = new EventEmitter<string>();
 
   inputConfig = {
     label: 'filter'
@@ -43,6 +44,10 @@ export class UsersListComponent implements OnInit, OnChanges {
       columns: e
     };
     this.requestColumns.emit(e);
+  }
+
+  handleFetchRequest(e: string) {
+    this.fetchRequest.emit(e);
   }
 
 }

@@ -5,6 +5,7 @@ export interface TableData {
   data: UserDetails[];
   columns: string[];
   filter?: string;
+  emit?: boolean;
 }
 
 @Component({
@@ -14,7 +15,7 @@ export interface TableData {
 })
 export class UsersListContainerComponent implements OnInit {
 
-  displayedColumns: string[] = ['picture', 'name', 'gender', 'location', 'e-mail', 'age', 'registered', 'phone-number', 'nationality'];
+  displayedColumns: string[] = ['index', 'picture', 'name', 'gender', 'location', 'e-mail', 'age', 'registered', 'phone-number', 'nationality'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
 
   data: TableData = {
@@ -27,30 +28,36 @@ export class UsersListContainerComponent implements OnInit {
 
   loading = false;
 
+  page = 1;
+
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers(results?: number) {
+  getUsers() {
     this.loading = true;
-    this.usersService.getUsers(results).subscribe(res => {
+    this.usersService.getUsers(this.page).subscribe(res => {
+      console.log('incremented request', this.page);
       this.loading = false;
       this.rawData = res;
-      this.transformedData = res.results.map(item => this.usersService.transformData(item));
+      this.transformedData = res.results.map((item, i) => this.usersService.transformData(item, i, this.page));
 
       this.data = {
-        data: this.transformedData,
-        columns: this.columnsToDisplay
+        data: this.data.data.concat(this.transformedData),
+        columns: this.columnsToDisplay,
+        emit: true
       };
+
+      this.page += 1;
     }, err => {
       this.loading = false;
     })
   }
 
-  updateRequestColumns(e: string[]) {
-    this.usersService.updateRequestColumns(e);
+  handleFetchRequest(e: string) {
+    this.getUsers();
   }
 
 }

@@ -6,5 +6,5 @@
         <app-input [data]="inputConfig" (filterValue)="passFilter($event)"></app-input>
         <app-selection-checkbox [data]="selectionConfig" (selectedColumns)="updateColumns($event)"></app-selection-checkbox>
     </div>
-    <app-table [data]="data"></app-table>
+    <app-table [data]="data" (fetchData)="handleFetchRequest($event)"></app-table>
 </mat-card-content>

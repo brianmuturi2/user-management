@@ -1,4 +1,4 @@
-<section class="table-container">
+<section class="table-container" (scroll)="handleScroll($event)">
     <table mat-table [dataSource]="dataSource">
         <ng-container [matColumnDef]="column" *ngFor="let column of data.columns">
             <th mat-header-cell *matHeaderCellDef> {{column | replaceDash | titlecase}} </th>
@@ -12,7 +12,7 @@
 
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
     </table>
 </section>
