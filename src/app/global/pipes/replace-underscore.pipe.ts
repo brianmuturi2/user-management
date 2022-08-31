@@ -1,12 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'replaceUnderscore'
+    name: 'replaceUnderscore'
 })
 export class ReplaceUnderscorePipe implements PipeTransform {
 
-  transform(value: string): string {
-    return value.replace(/_/gm, ' ');
-  }
+    transform(value: string): string {
+        return value.replace(/_/gm, ' ');
+    }
 
 }

@@ -51,7 +51,7 @@ export class TableComponent implements OnInit, OnChanges {
         this.dataSource.filter = filter;
     }
 
-    handleScroll(e:any) {
+    handleScroll(e: any) {
         const bottomSpace = e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight;
         if (bottomSpace < 900 && this.canEmit) {
             this.fetchData.emit('fetch');

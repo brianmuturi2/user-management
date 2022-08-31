@@ -7,7 +7,7 @@ import {BreakpointObserver, Breakpoints, MediaMatcher} from '@angular/cdk/layout
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit{
+export class LayoutComponent implements OnInit {
 
     date = new Date();
 

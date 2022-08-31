@@ -1,12 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'replaceDash'
+    name: 'replaceDash'
 })
 export class ReplaceDashPipe implements PipeTransform {
 
-  transform(value: string): string {
-    return value.replace(/-/gm, ' ');
-  }
+    transform(value: string): string {
+        return value.replace(/-/gm, ' ');
+    }
 
 }

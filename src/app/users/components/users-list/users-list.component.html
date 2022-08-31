@@ -1,10 +1,10 @@
-
 <mat-card-title>Manage Users</mat-card-title>
 <mat-divider></mat-divider>
 <mat-card-content>
     <div class="options">
         <app-input [data]="inputConfig" (filterValue)="passFilter($event)"></app-input>
-        <app-selection-checkbox [data]="selectionConfig" (selectedColumns)="updateColumns($event)"></app-selection-checkbox>
+        <app-selection-checkbox [data]="selectionConfig"
+                                (selectedColumns)="updateColumns($event)"></app-selection-checkbox>
     </div>
     <app-table [data]="data" (fetchData)="handleFetchRequest($event)"></app-table>
 </mat-card-content>

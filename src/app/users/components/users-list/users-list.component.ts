@@ -3,47 +3,47 @@ import {TableData} from '../../containers/users-list-container/users-list-contai
 import {SelectionInput} from '../../../global/components/selection-checkbox/selection-checkbox.component';
 
 @Component({
-  selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-users-list',
+    templateUrl: './users-list.component.html',
+    styleUrls: ['./users-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent implements OnInit, OnChanges {
 
-  @Input() data: TableData;
-  @Output() requestColumns = new EventEmitter<string[]>();
-  @Output() fetchRequest = new EventEmitter<string>();
+    @Input() data: TableData;
+    @Output() requestColumns = new EventEmitter<string[]>();
+    @Output() fetchRequest = new EventEmitter<string>();
 
-  inputConfig = {
-    label: 'filter'
-  }
-
-  selectionConfig: SelectionInput;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-
-  }
-
-
-  ngOnChanges(): void {
-    this.selectionConfig = {
-      selections: this.data.columns
+    inputConfig = {
+        label: 'filter'
     }
-  }
 
-  passFilter(e: string) {
-    this.data = {...this.data, filter: e};
-  }
+    selectionConfig: SelectionInput;
 
-  updateColumns(e: string[]) {
-    this.requestColumns.emit(e);
-  }
+    constructor() {
+    }
 
-  handleFetchRequest(e: string) {
-    this.fetchRequest.emit(e);
-  }
+    ngOnInit(): void {
+
+    }
+
+
+    ngOnChanges(): void {
+        this.selectionConfig = {
+            selections: this.data.columns
+        }
+    }
+
+    passFilter(e: string) {
+        this.data = {...this.data, filter: e};
+    }
+
+    updateColumns(e: string[]) {
+        this.requestColumns.emit(e);
+    }
+
+    handleFetchRequest(e: string) {
+        this.fetchRequest.emit(e);
+    }
 
 }

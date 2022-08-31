@@ -1,27 +1,28 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 export interface InputData {
-  label: string;
+    label: string;
 }
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+    selector: 'app-input',
+    templateUrl: './input.component.html',
+    styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnInit {
 
-  @Input() data: InputData;
-  @Output() filterValue = new EventEmitter<string>()
+    @Input() data: InputData;
+    @Output() filterValue = new EventEmitter<string>()
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  keyUp(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.filterValue.emit(filterValue);
-  }
+    keyUp(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+        this.filterValue.emit(filterValue);
+    }
 
 }
