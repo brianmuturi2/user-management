@@ -25,10 +25,18 @@ export class UsersListContainerComponent implements OnInit {
   rawData: any;
   transformedData: any;
 
+  loading = false;
+
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe(res => {
+    this.getUsers();
+  }
+
+  getUsers(results?: number) {
+    this.loading = true;
+    this.usersService.getUsers(results).subscribe(res => {
+      this.loading = false;
       this.rawData = res;
       this.transformedData = res.results.map(item => this.usersService.transformData(item));
 
@@ -36,6 +44,8 @@ export class UsersListContainerComponent implements OnInit {
         data: this.transformedData,
         columns: this.columnsToDisplay
       };
+    }, err => {
+      this.loading = false;
     })
   }
 
