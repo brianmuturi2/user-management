@@ -1,0 +1,6 @@
+<mat-form-field appearance="outline">
+    <mat-label>{{selectionConfig.label}}</mat-label>
+    <mat-select [formControl]="columns" multiple (selectionChange)="handleColumns($event)">
+        <mat-option *ngFor="let column of selectionConfig.selections" [value]="column">{{column}}</mat-option>
+    </mat-select>
+</mat-form-field>

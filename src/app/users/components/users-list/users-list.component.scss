@@ -1,19 +1,12 @@
 .options {
   display: flex;
   padding-top: 15px;
-  justify-content: space-between;
   gap: 15px;
-  align-items: start;
 
   @media only screen and (max-width: 990px)  {
     flex-direction: column;
     flex: 1;
-    align-items: start;
     margin-bottom: 15px;
-
-    app-selection-checkbox {
-      margin-top: -22px;
-    }
   }
 }
 

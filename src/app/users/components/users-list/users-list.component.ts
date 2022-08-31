@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {TableData} from '../../containers/users-list-container/users-list-container.component';
-import {SelectionInput} from '../../../global/components/selection-checkbox/selection-checkbox.component';
+import {SelectedColumns} from '../../../global/components/multi-select/multi-select.component';
 
 @Component({
     selector: 'app-users-list',
@@ -8,7 +8,7 @@ import {SelectionInput} from '../../../global/components/selection-checkbox/sele
     styleUrls: ['./users-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersListComponent implements OnInit, OnChanges {
+export class UsersListComponent implements OnInit {
 
     @Input() data: TableData;
     @Output() requestColumns = new EventEmitter<string[]>();
@@ -18,19 +18,15 @@ export class UsersListComponent implements OnInit, OnChanges {
         label: 'filter'
     }
 
-    selectionConfig: SelectionInput;
+    columnSelectionConfig: SelectedColumns;
 
     constructor() {
     }
 
     ngOnInit(): void {
-
-    }
-
-
-    ngOnChanges(): void {
-        this.selectionConfig = {
-            selections: this.data.columns
+        this.columnSelectionConfig = {
+            selections: this.data.columns,
+            label: 'Select columns'
         }
     }
 

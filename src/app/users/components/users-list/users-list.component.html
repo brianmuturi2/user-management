@@ -8,8 +8,7 @@
 <mat-card-content>
     <div class="options">
         <app-input [data]="inputConfig" (filterValue)="passFilter($event)"></app-input>
-        <app-selection-checkbox [data]="selectionConfig"
-                                (selectedColumns)="updateColumns($event)"></app-selection-checkbox>
+        <app-multi-select [selectionConfig]="columnSelectionConfig" (selectedColumns)="updateColumns($event)"></app-multi-select>
     </div>
     <app-table [data]="data" (fetchData)="handleFetchRequest($event)"></app-table>
 </mat-card-content>

@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 import {TableComponent} from './table/table.component';
 import {MaterialModule} from '../material/material.module';
 import {AllPipesModule} from '../pipes/pipes/pipes.module';
-import {ReplaceDashPipe} from '../pipes/replace-dash.pipe';
 import { InputComponent } from './input/input.component';
-import { SelectionCheckboxComponent } from './selection-checkbox/selection-checkbox.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { MultiSelectComponent } from './multi-select/multi-select.component';
 
 
 @NgModule({
   declarations: [
     TableComponent,
     InputComponent,
-    SelectionCheckboxComponent,
+    MultiSelectComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +23,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   exports: [
     TableComponent,
     InputComponent,
-    SelectionCheckboxComponent
+    MultiSelectComponent,
   ]
 })
 export class GlobalComponentsModule { }
