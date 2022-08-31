@@ -16,3 +16,14 @@
     }
   }
 }
+
+.title-items {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  button {
+    margin-top: -17px;
+  }
+}
