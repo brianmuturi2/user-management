@@ -39,10 +39,6 @@ export class UsersListComponent implements OnInit, OnChanges {
   }
 
   updateColumns(e: string[]) {
-    this.data = {
-      ...this.data,
-      columns: e
-    };
     this.requestColumns.emit(e);
   }
 

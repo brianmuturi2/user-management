@@ -39,14 +39,13 @@ export class UsersListContainerComponent implements OnInit {
   getUsers() {
     this.loading = true;
     this.usersService.getUsers(this.page).subscribe(res => {
-      console.log('incremented request', this.page);
       this.loading = false;
       this.rawData = res;
       this.transformedData = res.results.map((item, i) => this.usersService.transformData(item, i, this.page));
 
       this.data = {
+        ...this.data,
         data: this.data.data.concat(this.transformedData),
-        columns: this.columnsToDisplay,
         emit: true
       };
 
@@ -58,6 +57,15 @@ export class UsersListContainerComponent implements OnInit {
 
   handleFetchRequest(e: string) {
     this.getUsers();
+  }
+
+  handleRequestColumns(e: string[]) {
+    this.data = {
+      ...this.data,
+      columns: e
+    };
+
+    this.usersService.updateRequestParams(e);
   }
 
 }

@@ -20,7 +20,7 @@ interface Form {
     templateUrl: './selection-checkbox.component.html',
     styleUrls: ['./selection-checkbox.component.scss']
 })
-export class SelectionCheckboxComponent implements OnInit, OnChanges {
+export class SelectionCheckboxComponent implements OnInit {
 
     @Input() data: SelectionInput;
     @Output() selectedColumns = new EventEmitter();
@@ -33,13 +33,10 @@ export class SelectionCheckboxComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        this.trackColumns();
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
         if (this.data.selections.length >= 1) {
             this.addSelections(this.data.selections);
         }
+        this.trackColumns();
     }
 
     get columns() {

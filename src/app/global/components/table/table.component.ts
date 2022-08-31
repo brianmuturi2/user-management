@@ -47,6 +47,7 @@ export class TableComponent implements OnInit, OnChanges {
     }
 
     applyFilter(filter: string) {
+        this.canEmit = false;
         this.dataSource.filter = filter;
     }
 
