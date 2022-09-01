@@ -27,9 +27,7 @@ export class UsersService {
     usersUrl = 'https://randomuser.me/api/';
     queryParams = ['name', 'gender', 'location', 'email', 'dob', 'registered', 'phone', 'picture', 'nat']
 
-    constructor(private httpClient: HttpClient,
-                private datePipe: DatePipe,
-                private titleCasePipe: TitleCasePipe) {
+    constructor(private httpClient: HttpClient) {
     }
 
     getUsers(requestNumber: number = 1) {
@@ -38,27 +36,6 @@ export class UsersService {
         const fetchUrl = `${this.usersUrl}?page=${requestNumber}&results=${results}&inc=${paramsQuery}`;
 
         return this.httpClient.get<Response>(fetchUrl);
-    }
-
-    transformData(item: any, i: number, page: number): UserDetails {
-        let counter: number = 0;
-
-        if (page > 1) {
-            counter = 50 * (page - 1);
-        }
-
-        return {
-            index: i + 1 + counter,
-            picture: (item.picture ? item.picture.large : 'Not Available'),
-            name: (item.name ? `${item.name.title} ${item.name.first} ${item.name.last}` : 'Not Available'),
-            gender: (item.gender ? this.titleCasePipe.transform(item.gender) : 'Not Available'),
-            location: (item.location ? item.location.country : 'Not Available'),
-            'e-mail': (item.email ? item.email : 'Not Available'),
-            age: (item.dob ? `${item.dob.age} years` : 'Not Available'),
-            registered: (item.registered ? this.datePipe.transform(item.registered.date) : 'Not Available'),
-            'phone-number': (item.phone ? item.phone : 'Not Available'),
-            nationality: (item.nat ? item.nat : 'Not Available')
-        }
     }
 
     updateRequestParams(e: string[]) {

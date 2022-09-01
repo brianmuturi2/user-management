@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserDetails, UsersService} from '../../services/users.service';
 import {FilterObj} from '../../../global/components/select/select.component';
 import {CsvService} from '../../services/csv.service';
+import {TransformUsersService} from '../../services/transform-users.service';
 
 interface FilterStrings {
     gender?: string;
@@ -39,7 +40,8 @@ export class UsersListContainerComponent implements OnInit {
 
     page = 1;
 
-    constructor(private usersService: UsersService) {
+    constructor(private usersService: UsersService,
+                private transformUsersService: TransformUsersService) {
     }
 
     ngOnInit(): void {
@@ -51,7 +53,7 @@ export class UsersListContainerComponent implements OnInit {
         this.usersService.getUsers(this.page).subscribe(res => {
             this.loading = false;
             this.rawData = res;
-            this.transformedData = res.results.map((item, i) => this.usersService.transformData(item, i, this.page));
+            this.transformedData = res.results.map((item, i) => this.transformUsersService.transformData(item, i, this.page));
 
             this.data = {
                 ...this.data,
