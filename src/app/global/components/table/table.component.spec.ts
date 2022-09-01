@@ -14,6 +14,12 @@ describe('TableComponent', () => {
 
     fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
+    component.data = {
+      data: [],
+      columns: [],
+      filters: { gender: '', nationality: '', all: ''},
+      emit: false
+    }
     fixture.detectChanges();
   });
 
