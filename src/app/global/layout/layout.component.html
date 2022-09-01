@@ -3,6 +3,15 @@
         <button mat-icon-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
+        <button
+                mat-icon-button
+                (click)="toggleDarkTheme()"
+                class="theme-toggle"
+                aria-label="Toggle Dark Theme"
+        >
+            <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
+        </button>
+        <span class="spacer"></span>
         <!--<img src="../../../assets/images/jumia.png" alt="Logo">-->
     </mat-toolbar>
     <mat-sidenav-container class="sidenav-container">

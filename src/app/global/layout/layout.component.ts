@@ -15,7 +15,7 @@ export class LayoutComponent implements OnInit {
 
     opened: boolean;
 
-    navItems = ['Home', 'Settings', 'Notifications']
+    navItems = ['Home', 'Users', 'Notifications','Settings']
 
     fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
