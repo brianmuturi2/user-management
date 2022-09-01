@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {MatSelect} from '@angular/material/select';
 
 export interface SelectedColumns {
     selections: string[];
@@ -17,6 +18,7 @@ export class MultiSelectComponent implements OnInit {
 
     @Input() selectionConfig: SelectedColumns;
     @Output() selectedItems = new EventEmitter<string[]>();
+    @ViewChild(MatSelect) public matSelect: MatSelect;
 
     constructor() {
     }

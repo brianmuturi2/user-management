@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSelect} from '@angular/material/select';
 
 export interface FilterObj {
     type: string;
@@ -21,6 +22,7 @@ export class SelectComponent implements OnInit {
 
     @Input() selectDropdownConfig: SelectDropdownConfig;
     @Output() selectedValue = new EventEmitter<FilterObj>()
+    @ViewChild(MatSelect) public matSelect: MatSelect;
 
     selectForm: FormGroup;
 

@@ -13,6 +13,7 @@ export class InputComponent implements OnInit {
 
     @Input() inputConfig: InputData;
     @Output() inputValue = new EventEmitter<string>()
+        @ViewChild('input') public input: ElementRef;
 
     constructor() {
     }
