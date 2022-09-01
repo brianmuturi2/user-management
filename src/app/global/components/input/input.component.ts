@@ -11,8 +11,8 @@ export interface InputData {
 })
 export class InputComponent implements OnInit {
 
-    @Input() data: InputData;
-    @Output() filterValue = new EventEmitter<string>()
+    @Input() inputConfig: InputData;
+    @Output() inputValue = new EventEmitter<string>()
 
     constructor() {
     }
@@ -21,8 +21,8 @@ export class InputComponent implements OnInit {
     }
 
     keyUp(event: Event) {
-        const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-        this.filterValue.emit(filterValue);
+        const inputValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+        this.inputValue.emit(inputValue);
     }
 
 }

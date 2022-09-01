@@ -1,0 +1,10 @@
+<form [formGroup]="selectForm">
+    <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>{{selectDropdownConfig.label}}</mat-label>
+        <mat-select formControlName="filter" (selectionChange)="handleFilter($event)">
+            <mat-option *ngFor="let selectVal of selectDropdownConfig.values" [value]="selectVal">
+                {{selectVal}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>

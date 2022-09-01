@@ -1,10 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {UserDetails, UsersService} from '../../services/users.service';
+import {FilterObj} from '../../../global/components/select/select.component';
+
+interface FilterStrings {
+    gender?: string;
+    nationality?: string;
+    all: string;
+}
 
 export interface TableData {
     data: UserDetails[];
     columns: string[];
-    filter?: string;
+    filters: FilterStrings;
     emit?: boolean;
 }
 
@@ -20,7 +27,8 @@ export class UsersListContainerComponent implements OnInit {
 
     data: TableData = {
         data: [],
-        columns: this.columnsToDisplay
+        columns: this.columnsToDisplay,
+        filters: {all: ''}
     };
 
     rawData: any;
@@ -67,6 +75,28 @@ export class UsersListContainerComponent implements OnInit {
         };
 
         this.usersService.updateRequestParams(e);
+    }
+
+    handleFilter(e: FilterObj) {
+        if (e.type === 'gender') {
+            this.data = {
+                ...this.data,
+                filters: {...this.data.filters, gender: e.filter}
+            }
+        }
+        if (e.type === 'nationality') {
+            this.data = {
+                ...this.data,
+                filters: {...this.data.filters, nationality: e.filter}
+            }
+        }
+    }
+
+    handleFilterString(e: string) {
+        this.data = {
+            ...this.data,
+            filters: {all: e}
+        }
     }
 
 }

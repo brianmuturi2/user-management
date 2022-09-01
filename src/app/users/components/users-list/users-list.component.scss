@@ -1,12 +1,12 @@
 .options {
   display: flex;
-  padding-top: 15px;
+  padding-top: 17px;
   gap: 15px;
 
   @media only screen and (max-width: 990px)  {
     flex-direction: column;
-    flex: 1;
     margin-bottom: 15px;
+    align-items: stretch;
   }
 }
 

@@ -1,5 +1,8 @@
-<app-users-list [data]="data" (fetchRequest)="handleFetchRequest($event)"
-                (requestColumns)="handleRequestColumns($event)"></app-users-list>
+<app-users-list [data]="data"
+                (fetchRequest)="handleFetchRequest($event)"
+                (requestColumns)="handleRequestColumns($event)"
+                (handleFilter)="handleFilter($event)"
+                (handleFilterString)="handleFilterString($event)"></app-users-list>
 <ng-container *ngIf="loading">
     <div class="spinner">
         <mat-spinner></mat-spinner>

@@ -1,30 +1,32 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {FormControl} from '@angular/forms';
 
 export interface SelectedColumns {
-  selections: string[];
-  label: string;
+    selections: string[];
+    label: string;
 }
 
 @Component({
-  selector: 'app-multi-select',
-  templateUrl: './multi-select.component.html',
-  styleUrls: ['./multi-select.component.scss']
+    selector: 'app-multi-select',
+    templateUrl: './multi-select.component.html',
+    styleUrls: ['./multi-select.component.scss']
 })
 export class MultiSelectComponent implements OnInit {
 
-  columns = new FormControl(['']);
+    items = new FormControl(['']);
 
-  @Input() selectionConfig: SelectedColumns;
-  @Output() selectedColumns = new EventEmitter<any>();
-  constructor() { }
+    @Input() selectionConfig: SelectedColumns;
+    @Output() selectedItems = new EventEmitter<string[]>();
 
-  ngOnInit(): void {
-    this.columns.setValue(this.selectionConfig.selections);
-  }
+    constructor() {
+    }
 
-  handleColumns(e: any) {
-    this.selectedColumns.emit(e.value);
-  }
+    ngOnInit(): void {
+        this.items.setValue(this.selectionConfig.selections);
+    }
+
+    handleItems(e: any) {
+        this.selectedItems.emit(e.value);
+    }
 
 }
