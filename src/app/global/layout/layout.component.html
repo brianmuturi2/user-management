@@ -1,14 +1,13 @@
 <div class="app-container">
     <mat-toolbar color="accent" class="app-toolbar">
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button mat-icon-button (click)="sidenav.toggle()" data-testid="menu-button">
             <mat-icon>menu</mat-icon>
         </button>
         <button
                 mat-icon-button
                 (click)="toggleDarkTheme()"
                 class="theme-toggle"
-                aria-label="Toggle Dark Theme"
-        >
+                aria-label="Toggle Dark Theme" data-testid="mode-button">
             <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
         </button>
         <span class="spacer"></span>
