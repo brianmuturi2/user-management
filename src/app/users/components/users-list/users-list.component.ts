@@ -17,6 +17,7 @@ export class UsersListComponent implements OnInit {
     @Output() fetchRequest = new EventEmitter<string>();
     @Output() handleFilter = new EventEmitter<FilterObj>();
     @Output() handleFilterString = new EventEmitter<string>();
+    @Output() downloadCsvDoc = new EventEmitter<string>();
 
     columnSelectionConfig: SelectedColumns;
 
@@ -60,6 +61,10 @@ export class UsersListComponent implements OnInit {
 
     handleFilterInput(e: string) {
         this.handleFilterString.emit(e);
+    }
+
+    downloadCsv(e: any) {
+        this.downloadCsvDoc.emit('download');
     }
 
 }

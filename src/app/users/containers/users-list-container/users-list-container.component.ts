@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserDetails, UsersService} from '../../services/users.service';
 import {FilterObj} from '../../../global/components/select/select.component';
+import {CsvService} from '../../services/csv.service';
 
 interface FilterStrings {
     gender?: string;
@@ -97,6 +98,10 @@ export class UsersListContainerComponent implements OnInit {
             ...this.data,
             filters: {all: e}
         }
+    }
+
+    generateCsv(e: string) {
+        CsvService.exportToCsv('users.csv', this.data.data);
     }
 
 }
