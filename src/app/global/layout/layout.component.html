@@ -1,5 +1,5 @@
 <div class="app-container">
-    <mat-toolbar color="accent" class="app-toolbar">
+    <mat-toolbar color="primary" class="app-toolbar">
         <button mat-icon-button (click)="sidenav.toggle()" data-testid="menu-button">
             <mat-icon>menu</mat-icon>
         </button>
@@ -11,7 +11,7 @@
             <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
         </button>
         <span class="spacer"></span>
-        <!--<img src="../../../assets/images/jumia.png" alt="Logo">-->
+        <img src="../../../assets/images/jumia.png" alt="Logo">
     </mat-toolbar>
     <mat-sidenav-container class="sidenav-container">
         <mat-sidenav #sidenav [mode]="mode" [opened]="isOpen">
