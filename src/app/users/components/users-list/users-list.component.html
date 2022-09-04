@@ -7,9 +7,9 @@
 <mat-divider></mat-divider>
 <mat-card-content>
     <div class="options">
-        <app-input [inputConfig]="filterInput" (inputValue)="handleFilterInput($event)"></app-input>
-<!--        <app-select [selectDropdownConfig]="filterGender" (selectedValue)="passSelected($event)"></app-select>
-        <app-select [selectDropdownConfig]="filterNationality" (selectedValue)="passSelected($event)"></app-select>-->
+        <!--<app-input [inputConfig]="filterInput" (inputValue)="handleFilterInput($event)"></app-input>-->
+        <app-select [selectDropdownConfig]="filterGender" (selectedValue)="passSelected($event)"></app-select>
+        <app-select [selectDropdownConfig]="filterNationality" (selectedValue)="passSelected($event)"></app-select>
         <app-multi-select [selectionConfig]="columnSelectionConfig" (selectedItems)="updateItems($event)"></app-multi-select>
     </div>
     <app-table [data]="data" (fetchData)="handleFetchRequest($event)"></app-table>

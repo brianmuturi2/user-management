@@ -24,13 +24,13 @@ export class UsersListComponent implements OnInit {
     filterGender: SelectDropdownConfig = {
         type: 'gender',
         label: 'Select gender',
-        values: ['Male', 'Female']
+        values: ['All', 'Male', 'Female']
     }
 
     filterNationality: SelectDropdownConfig = {
         type: 'nationality',
         label: 'Select nationality',
-        values: ['AU', 'BR', 'CA', 'CH', 'DE', 'DK', 'ES', 'FI', 'FR', 'GB', 'IE', 'IN', 'IR', 'MX', 'NL', 'NO', 'NZ', 'RS', 'TR', 'UA', 'US']
+        values: ['All', 'AU', 'BR', 'CA', 'CH', 'DE', 'DK', 'ES', 'FI', 'FR', 'GB', 'IE', 'IN', 'IR', 'MX', 'NL', 'NO', 'NZ', 'RS', 'TR', 'UA', 'US']
     }
 
     filterInput: InputData = {

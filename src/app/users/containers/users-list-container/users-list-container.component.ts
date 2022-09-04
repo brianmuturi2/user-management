@@ -14,7 +14,7 @@ export interface TableData {
     data: UserDetails[];
     columns: string[];
     filters: FilterStrings;
-    emit?: boolean;
+    canFetch?: boolean;
 }
 
 @Component({
@@ -58,7 +58,7 @@ export class UsersListContainerComponent implements OnInit {
             this.data = {
                 ...this.data,
                 data: this.data.data.concat(this.transformedData),
-                emit: true
+                canFetch: true
             };
 
             this.page += 1;
