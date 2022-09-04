@@ -52,7 +52,6 @@ export class TableComponent implements OnInit, OnChanges {
     }
 
     getFilterPredicate() {
-        console.log('predicate running')
         return (data: UserDetails, filters: string) => {
             console.log('running pred')
             const filterArray = filters.split('_');
