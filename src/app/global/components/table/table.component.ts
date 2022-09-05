@@ -43,7 +43,7 @@ export class TableComponent implements OnInit, OnChanges {
         if (this.dataSource) {
             this.dataSource.data = this.data.data;
         }
-        if (this.data.filters.gender || this.data.filters.nationality || this.data.filters.all) {
+        if (this.data.filters.length >= 1) {
             this.applyFilter();
         }
         if (!this.canFetch) {
@@ -52,20 +52,17 @@ export class TableComponent implements OnInit, OnChanges {
     }
 
     getFilterPredicate() {
-        return (data: UserDetails, filters: string) => {
-            const filterArray = filters.split('_');
-            const genderFilter = filterArray[0];
-            const nationalityFilter = filterArray[1];
+        return (data: any, filters: string) => {
+            const obj = {...this.data.data[0]} as const;
+            type Keys = keyof typeof obj;
 
-            let matchFilter = [];
-
-            const genderStatus = data.gender.toLowerCase() === genderFilter || genderFilter === '';
-
-            const nationalityStatus = data.nationality.toLowerCase() === nationalityFilter || nationalityFilter === '';
-
-            matchFilter = [genderStatus, nationalityStatus]
-
-            return matchFilter.every(Boolean);
+            const map = new Map(JSON.parse(filters));
+            let isMatch = false;
+            for(let [key,value] of map){
+                isMatch = (value == 'all') || (data[key as keyof Keys].toLowerCase() == value);
+                if(!isMatch) return false;
+            }
+            return isMatch;
         };
     }
 
@@ -74,15 +71,12 @@ export class TableComponent implements OnInit, OnChanges {
 
         let filterString: string = '';
 
-        if (this.data.filters.gender || this.data.filters.nationality) {
-            const gender = this.data.filters.gender && this.data.filters.gender !== 'All' ? this.data.filters.gender : '';
-            const nationality = this.data.filters.nationality && this.data.filters.nationality !== 'All' ? this.data.filters.nationality : '';
-            filterString = `${gender}_${nationality}`;
+        let filterArr = [];
+        for (let filterObj of this.data.filters) {
+            const arr = Object.values(filterObj);
+            filterArr.push(arr);
         }
-
-        if (this.data.filters.all) {
-            filterString = this.data.filters.all;
-        }
+        filterString = JSON.stringify(filterArr);
 
         this.dataSource.filter = filterString.trim().toLowerCase();
     }

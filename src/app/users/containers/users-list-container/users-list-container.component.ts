@@ -5,15 +5,14 @@ import {CsvService} from '../../services/csv.service';
 import {TransformUsersService} from '../../services/transform-users.service';
 
 interface FilterStrings {
-    gender?: string;
-    nationality?: string;
-    all: string;
+    column?: string;
+    value?: string;
 }
 
 export interface TableData {
     data: UserDetails[];
     columns: string[];
-    filters: FilterStrings;
+    filters: FilterStrings[];
     canFetch?: boolean;
 }
 
@@ -30,7 +29,7 @@ export class UsersListContainerComponent implements OnInit {
     data: TableData = {
         data: [],
         columns: this.columnsToDisplay,
-        filters: {all: ''}
+        filters: [],
     };
 
     rawData: any;
@@ -81,24 +80,16 @@ export class UsersListContainerComponent implements OnInit {
     }
 
     handleFilter(e: FilterObj) {
-        if (e.type === 'gender') {
-            this.data = {
-                ...this.data,
-                filters: {...this.data.filters, gender: e.filter}
-            }
-        }
-        if (e.type === 'nationality') {
-            this.data = {
-                ...this.data,
-                filters: {...this.data.filters, nationality: e.filter}
-            }
+        this.data = {
+            ...this.data,
+            filters: [...this.data.filters, {column: e.type, value: e.filter}]
         }
     }
 
     handleFilterString(e: string) {
         this.data = {
             ...this.data,
-            filters: {all: e}
+            filters: [...this.data.filters, {column: 'all', value: e}]
         }
     }
 
