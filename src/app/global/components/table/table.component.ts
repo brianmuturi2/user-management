@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {TableData} from '../../../users/containers/users-list-container/users-list-container.component';
 import {MatTableDataSource} from '@angular/material/table';
-import {UserDetails} from '../../../users/services/users.service';
 
 @Component({
     selector: 'app-table',
